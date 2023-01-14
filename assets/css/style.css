@@ -1,0 +1,66 @@
+html {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin: 3rem;
+}
+
+.btn {
+    text-align: center;
+}
+
+button {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: purple;
+    border-radius: 25px;
+    border-style: none;
+}
+
+button:hover {
+    transition: transform 150ms;
+    transform: scale(1.03);
+}
+
+@media only screen and (min-width: 768px) {
+    html {
+        font-size: 200%;
+    }
+    
+    .wrapper {
+        margin: 0 5rem;
+    }
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #start-quiz:hover {
+        cursor: pointer;
+    }
+}

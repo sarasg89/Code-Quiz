@@ -25,8 +25,9 @@ function countdown() {
 function startQuiz() {
     startScreenEl.setAttribute("hidden", "hidden");
     questionsEl.removeAttribute("hidden");
-   
+
     countdown();
+    showFirstQuestion();
 }
 
 // When the "start quiz" button is pressed, the timer will start counting down from 100 and the screen will move on to the questions
@@ -74,9 +75,13 @@ var questions = [
     },
 ];
 
-questionEl.textContent = questions[0].title;
-choice1El.textContent = "1. " + questions[0].choices[0];
-choice2El.textContent = "2. " + questions[0].choices[1];
-choice3El.textContent = "3. " + questions[0].choices[2];
-choice4El.textContent = "4. " + questions[0].choices[3];
+function showFirstQuestion() {
+    questionEl.textContent = questions[0].title;
+    choice1El.textContent = "1. " + questions[0].choices[0];
+    choice2El.textContent = "2. " + questions[0].choices[1];
+    choice3El.textContent = "3. " + questions[0].choices[2];
+    choice4El.textContent = "4. " + questions[0].choices[3];
+}
+ 
+
 

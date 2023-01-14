@@ -44,6 +44,44 @@ button {
 button:hover {
     transition: transform 150ms;
     transform: scale(1.03);
+    cursor: pointer;
+}
+
+
+
+/*Styling only for the questions screen*/
+#questions-screen ul {
+    list-style-type: none;
+}
+
+#questions-screen .result {
+    border-top: 0.1rem solid grey;
+}
+
+#questions-screen .result h3 {
+    font-style: italic;
+    font-size: 1rem;
+    margin-left: 2rem;
+}
+
+li button {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    margin: 0.15rem;
+    text-align: left;
+    text-decoration: none;
+    color: white;
+    width: 15rem;
+    background-color: purple;
+    border-radius: 25px;
+    border-style: none;
+}
+
+li button:hover {
+    transition: transform 150ms;
+    transform: scale(1.03);
+    background-color: blueviolet;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
@@ -60,7 +98,4 @@ button:hover {
         justify-content: space-between;
     }
 
-    #start-quiz:hover {
-        cursor: pointer;
-    }
 }

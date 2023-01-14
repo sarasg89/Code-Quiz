@@ -10,6 +10,8 @@ If the user wishes to see previous high scores, they can do so by clicking on th
 
 ## Screnshots
 
+![](./assets/images/screenshot%201.png)
+
 ## Deployment
 
 ## Credits

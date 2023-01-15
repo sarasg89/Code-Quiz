@@ -7,6 +7,10 @@ var timerEl = document.querySelector("#time");
 var startQuizEl = document.querySelector("#start-quiz");
 var startScreenEl = document.querySelector("#start-screen");
 var questionsEl = document.querySelector("#questions-screen");
+var scoreIsEl = document.querySelector("#score-is");
+var submitEl = document.querySelector("#submitbtn");
+var nameEl = document.querySelector("#name");
+var displayMessageEL = document.querySelector("#display-message");
 var timeInterval;
 var timeLeft;
 
@@ -145,6 +149,8 @@ function loadQuiz() {
 
 }
 
+
+// This function will end the quiz either when the user answers the last question or when the timer reaches 0
 function endQuiz() {
     // Stop timer
     clearInterval(timeInterval);
@@ -155,15 +161,11 @@ function endQuiz() {
     // Show your score screen
     scoreScreen.removeAttribute("hidden");
     // Show your score in the screen
+    scoreIsEl.textContent = timeLeft;
+
 }
 
-// ***********
-// VIEW SCORES
-// ***********
-var scoreIsEl = document.querySelector("#score-is");
-var submitEl = document.querySelector("#submitbtn");
-var nameEl = document.querySelector("#name");
-var displayMessageEL = document.querySelector("#display-message");
+
 
 var scoresSaved = []
 
@@ -172,10 +174,10 @@ submitEl.addEventListener("click", function (event) {
         event.preventDefault();
         displayMessageEL.textContent = "Error, name cannot be blank";
     } else {
-        event.preventDefault();
         var user = nameEl.value;
-        var score = scoreIsEl;
-
+        var score = timeLeft;
+        scoresSaved = JSON.parse(localStorage.getItem("user"));
+        
         scoresSaved.push([user, score]);
 
         localStorage.setItem("user", JSON.stringify(scoresSaved));

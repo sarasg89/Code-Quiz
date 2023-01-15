@@ -121,12 +121,11 @@ function loadQuiz() {
         nextEl.removeEventListener("click", nextQuestion)
     }
 
-    function viewYourScore() {
-    }
-
+    
     if (currentQuestion === (questions.length - 1)) {
         nextEl.textContent = "View your score";
-        nextEl.addEventListener("click", viewYourScore);
+        nextEl.setAttribute("onclick", "window.location.href='./highscores.html'");
+        nextEl.addEventListener("click", );
     } else {
         nextEl.textContent = "Next question";
         nextEl.addEventListener("click", nextQuestion);

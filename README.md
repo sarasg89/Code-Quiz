@@ -10,7 +10,20 @@ If the user wishes to see previous high scores, they can do so by clicking on th
 
 ## Screnshots
 
+### Landing page
 ![](./assets/images/screenshot%201.png)
+
+### Sample question
+![](./assets/images/screenshot%202.png)
+
+### Sample correct answer
+![](./assets/images/screenshot%203.png)
+
+### Sample incorrect answer
+![](./assets/images/screenshot%204.png)
+
+### View your score after last question
+![](./assets/images/screenshot%205.png)
 
 ## Deployment
 

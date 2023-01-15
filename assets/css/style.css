@@ -79,24 +79,26 @@ li button:hover {
 
 /*Styling for the result screen*/
 #result-screen {
+    margin-top: 5rem;
     justify-content: space-between;
-    border-top: 0.1rem solid grey;
 }
 
 #result {
-    font-size: 1rem;
+    text-align: center;
+    font-size: 2rem;
     margin-left: 2rem;
 }
 
 #next {
-    font-size: 0.8rem;
-    padding: 0.25rem 0.75rem;
+    font-size: 2rem;
+    padding: 0 1rem;
 }
+
 
 
 @media only screen and (min-width: 768px) {
     html {
-        font-size: 200%;
+        font-size: 175%;
     }
     
     .wrapper {
@@ -106,6 +108,11 @@ li button:hover {
     header {
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    #result {
+        font-size: 2rem;
+        margin-left: 2rem;
     }
 
 }

@@ -24,7 +24,6 @@ function countdown() {
 // Function to hide the start screen and move on to the questions. This function also starts the countdown timer
 function startQuiz() {
     startScreenEl.setAttribute("hidden", "hidden");
-    questionsEl.removeAttribute("hidden");
 
     countdown();
     loadQuiz();
@@ -87,6 +86,9 @@ function loadQuiz() {
     var correctChoice = currentQuizData.answer;
     var userChoice = "";
 
+    // The questions screen is now visible
+    questionsEl.removeAttribute("hidden");
+
     // The current question number prints at the top
     questionNumEl.textContent = "Question " + (currentQuestion + 1) + " of " + questions.length;
 
@@ -97,11 +99,12 @@ function loadQuiz() {
     choice3El.textContent = "3. " + currentQuizData.choices[2];
     choice4El.textContent = "4. " + currentQuizData.choices[3];
 
-    // When the user clicks any of the available choices a function will save the answer in the userChoice variable and the result will be displayed
+    // When the user clicks any of the available choices a function will save the answer in the userChoice. The questions screen will hide again and the result screen will display
     listEl.addEventListener("click", function clickedAnswer(event) {
         userChoice = event.target.textContent.substring(3);
         resultScreenEl.removeAttribute("hidden");
         resultScreenEl.setAttribute("style", "display: flex;")
+        questionsEl.setAttribute("hidden", "hidden");
         if (userChoice === correctChoice) {
             resultEl.textContent = "Correct ✅";
         } else {
@@ -109,20 +112,30 @@ function loadQuiz() {
         }
     });
 
+    // When the next question button is clicked, the currentQuestion counter increases by 1, the result screen hides, and the loadQuiz function starts up again
     function nextQuestion() {
         currentQuestion++
-        console.log(currentQuestion);
         resultScreenEl.setAttribute("hidden", "hidden");
         resultScreenEl.removeAttribute("style");
         loadQuiz();
         nextEl.removeEventListener("click", nextQuestion)
     }
 
-    if (currentQuestion === questions.length) {
+    function viewYourScore() {
+    }
+
+    if (currentQuestion === (questions.length - 1)) {
         nextEl.textContent = "View your score";
+        nextEl.addEventListener("click", viewYourScore);
     } else {
         nextEl.textContent = "Next question";
         nextEl.addEventListener("click", nextQuestion);
     }
 
 }
+
+
+// ***********
+// VIEW SCORES
+// ***********
+

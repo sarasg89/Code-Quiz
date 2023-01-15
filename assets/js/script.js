@@ -8,6 +8,8 @@ var startQuizEl = document.querySelector("#start-quiz");
 var startScreenEl = document.querySelector("#start-screen");
 var questionsEl = document.querySelector("#questions-screen");
 
+
+
 // Function to create a countdown for 100-0 seconds
 function countdown() {
     var timeLeft = 100;
@@ -17,9 +19,10 @@ function countdown() {
         if (timeLeft === 0) {
             timerEl.textContent = timeLeft;
             clearInterval(timeInterval);
-        }
+        } 
     }, 1000);
 }
+
 
 // Function to hide the start screen and move on to the questions. This function also starts the countdown timer
 function startQuiz() {
@@ -124,9 +127,10 @@ function loadQuiz() {
     
     // After the user answers each question, the result is displayed and they can click on the button to move on to the next question. After the last question, the user can view their score.
     if (currentQuestion === (questions.length - 1)) {
-        nextEl.setAttribute("hidden", "hidden");
-        nextEl.setAttribute("onclick", "window.location.href='./highscores.html'");
-        nextEl.addEventListener("click", );
+        nextEl.textContent = "View your score";
+        nextEl.addEventListener("click", function() {
+            scoreScreen.removeAttribute("hidden");
+        })
     } else {
         nextEl.addEventListener("click", nextQuestion);
     }
@@ -137,4 +141,9 @@ function loadQuiz() {
 // ***********
 // VIEW SCORES
 // ***********
+var scoreIsEl = document.querySelector("#score-is");
+var submitEl = document.querySelector("#submitbtn");
+var scoreScreen = document.querySelector("#your-score-screen");
+
+submitEl.setAttribute("onclick", "window.location.href='./highscores.html'");
 

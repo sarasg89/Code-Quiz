@@ -54,7 +54,7 @@ button:hover {
     cursor: pointer;
 }
 
-/*Styling only for the questions screen*/
+/*Styling for the questions screen*/
 #question-number {
     margin: 0;
     font-size: 0.8rem;
@@ -129,6 +129,21 @@ input {
     width: 10rem;
     height: 1.2rem;
     margin-top: 1rem;
+    padding-left: 0.5rem;
+}
+
+/*Styling for the high scores page*/
+#highscores {
+    list-style-type: none;
+    margin: 2rem auto;
+}
+
+#highscores li {
+    margin: 0.75rem auto;
+    text-align: center;
+    line-height: 1.5rem;
+    width: 10rem;
+    background-color: white;
 }
 
 @media only screen and (min-width: 768px) {
@@ -148,6 +163,10 @@ input {
     #result {
         font-size: 2rem;
         margin-left: 2rem;
+    }
+
+    li {
+        width: 20rem;
     }
 
 }

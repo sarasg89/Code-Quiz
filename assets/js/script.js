@@ -161,7 +161,7 @@ function endQuiz() {
     // Show your score screen
     scoreScreen.removeAttribute("hidden");
     // Show your score in the screen
-    scoreIsEl.textContent = timeLeft;
+    scoreIsEl.textContent = timerEl.textContent;
 
 }
 

@@ -25,6 +25,12 @@ If the user wishes to see previous high scores, they can do so by clicking on th
 ### View your score after last question
 ![](./assets/images/screenshot%205.png)
 
+### Enter your name
+![](./assets/images/screenshot%206.png)
+
+### View saved scores
+![](./assets/images/Screenshot%207.png)
+
 ## Deployment
 
 https://sarasg89.github.io/Code-Quiz/

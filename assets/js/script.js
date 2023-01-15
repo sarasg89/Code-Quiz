@@ -19,7 +19,7 @@ function countdown() {
         if (timeLeft === 0) {
             timerEl.textContent = timeLeft;
             clearInterval(timeInterval);
-        } 
+        }
     }, 1000);
 }
 
@@ -124,11 +124,11 @@ function loadQuiz() {
         nextEl.removeEventListener("click", nextQuestion)
     }
 
-    
+
     // After the user answers each question, the result is displayed and they can click on the button to move on to the next question. After the last question, the user can view their score.
     if (currentQuestion === (questions.length - 1)) {
         nextEl.textContent = "View your score";
-        nextEl.addEventListener("click", function() {
+        nextEl.addEventListener("click", function () {
             scoreScreen.removeAttribute("hidden");
         })
     } else {
@@ -145,10 +145,19 @@ var scoreIsEl = document.querySelector("#score-is");
 var submitEl = document.querySelector("#submitbtn");
 var scoreScreen = document.querySelector("#your-score-screen");
 var initialsEl = document.querySelector("#initials");
+var displayMessageEL = document.querySelector("#display-message");
 
 // submitEl.setAttribute("onclick", "window.location.href='./highscores.html'");
 
-submitEl.addEventListener("click", function(event) {
-    event.preventDefault();
-    localStorage.setItem("initials", initialsEl.value);
+
+submitEl.addEventListener("click", function () {
+    if (initialsEl.value === "") {
+        event.preventDefault();
+        displayMessageEL.textContent = "Error, initial cannot be blank";
+    } else {
+        localStorage.setItem("initials", initialsEl.value);
+        localStorage.setItem("score", scoreIsEl)
+    };
 });
+
+

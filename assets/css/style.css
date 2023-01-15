@@ -28,7 +28,7 @@ h1 {
 
 p {
     text-align: center;
-    margin: 3rem;
+    margin: 1rem 3rem;
 }
 
 .btn {
@@ -55,18 +55,13 @@ button:hover {
 }
 
 /*Styling only for the questions screen*/
+#question-number {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
 #questions-screen ul {
     list-style-type: none;
-}
-
-#questions-screen .result {
-    border-top: 0.1rem solid grey;
-}
-
-#questions-screen .result h3 {
-    font-style: italic;
-    font-size: 1rem;
-    margin-left: 2rem;
 }
 
 li button {
@@ -81,6 +76,23 @@ li button:hover {
     background-image: linear-gradient(315deg, #8693AB 50%, #BDD4E7 100%);
     transform: scale(1.03);
 }
+
+/*Styling for the result screen*/
+#result-screen {
+    justify-content: space-between;
+    border-top: 0.1rem solid grey;
+}
+
+#result {
+    font-size: 1rem;
+    margin-left: 2rem;
+}
+
+#next {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+}
+
 
 @media only screen and (min-width: 768px) {
     html {

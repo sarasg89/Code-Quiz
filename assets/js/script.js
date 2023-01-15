@@ -39,13 +39,17 @@ startQuizEl.addEventListener("click", startQuiz);
 // ****************
 
 // Select HTML elements needed from the questions screen
+var questionNumEl = document.querySelector("#question-number");
 var questionEl = document.querySelector("#question");
 var listEl = document.querySelector("#list");
 var choice1El = document.querySelector("#choice1");
 var choice2El = document.querySelector("#choice2");
 var choice3El = document.querySelector("#choice3");
 var choice4El = document.querySelector("#choice4");
-var resultEl = document.querySelector(".result");
+var resultScreenEl = document.querySelector("#result-screen");
+var resultEl = document.querySelector("#result");
+var nextEl = document.querySelector("#next");
+
 
 // Variable that stores all questions, choices and answers
 var questions = [
@@ -80,26 +84,45 @@ var currentQuestion = 0;
 
 function loadQuiz() {
     var currentQuizData = questions[currentQuestion];
+    var correctChoice = currentQuizData.answer;
+    var userChoice = "";
 
+    // The current question number prints at the top
+    questionNumEl.textContent = "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    // The question and choices will auto populate based on the currentQuestion index
     questionEl.textContent = currentQuizData.title;
     choice1El.textContent = "1. " + currentQuizData.choices[0];
     choice2El.textContent = "2. " + currentQuizData.choices[1];
     choice3El.textContent = "3. " + currentQuizData.choices[2];
     choice4El.textContent = "4. " + currentQuizData.choices[3];
-    
-    
+
+    // When the user clicks any of the available choices a function will save the answer in the userChoice variable and the result will be displayed
     listEl.addEventListener("click", function clickedAnswer(event) {
-        event.target.setAttribute("data-state", "chosen")
+        userChoice = event.target.textContent.substring(3);
+        resultScreenEl.removeAttribute("hidden");
+        resultScreenEl.setAttribute("style", "display: flex;")
+        if (userChoice === correctChoice) {
+            resultEl.textContent = "Correct ✅";
+        } else {
+            resultEl.textContent = "Wrong ❌";
+        }
     });
-    
-    // currentQuestion++;
 
-    // loadQuiz();
+    function nextQuestion() {
+        currentQuestion++
+        console.log(currentQuestion);
+        resultScreenEl.setAttribute("hidden", "hidden");
+        resultScreenEl.removeAttribute("style");
+        loadQuiz();
+        nextEl.removeEventListener("click", nextQuestion)
+    }
 
-    // if (currentQuestion < questions.length) {
-    //    loadQuiz();
-    // } else {
+    if (currentQuestion === questions.length) {
+        nextEl.textContent = "View your score";
+    } else {
+        nextEl.textContent = "Next question";
+        nextEl.addEventListener("click", nextQuestion);
+    }
 
-    // }
 }
-

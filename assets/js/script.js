@@ -144,19 +144,24 @@ function loadQuiz() {
 var scoreIsEl = document.querySelector("#score-is");
 var submitEl = document.querySelector("#submitbtn");
 var scoreScreen = document.querySelector("#your-score-screen");
-var initialsEl = document.querySelector("#initials");
+var nameEl = document.querySelector("#name");
 var displayMessageEL = document.querySelector("#display-message");
 
-// submitEl.setAttribute("onclick", "window.location.href='./highscores.html'");
+var scoresSaved = []
 
-
-submitEl.addEventListener("click", function () {
-    if (initialsEl.value === "") {
+submitEl.addEventListener("click", function (event) {
+    if (nameEl.value === "") {
         event.preventDefault();
-        displayMessageEL.textContent = "Error, initial cannot be blank";
+        displayMessageEL.textContent = "Error, name cannot be blank";
     } else {
-        localStorage.setItem("initials", initialsEl.value);
-        localStorage.setItem("score", scoreIsEl)
+        event.preventDefault();
+        var user = nameEl.value;
+        var score = scoreIsEl;
+
+        scoresSaved.push([user, score]);
+
+        localStorage.setItem("user", JSON.stringify(scoresSaved));
+
     };
 });
 

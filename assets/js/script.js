@@ -7,7 +7,6 @@ var timerEl = document.querySelector("#time");
 var startQuizEl = document.querySelector("#start-quiz");
 var startScreenEl = document.querySelector("#start-screen");
 var questionsEl = document.querySelector("#questions-screen");
-var scoreIsEl = document.querySelector("#score-is");
 var submitEl = document.querySelector("#submitbtn");
 var nameEl = document.querySelector("#name");
 var displayMessageEL = document.querySelector("#display-message");
@@ -57,6 +56,7 @@ var resultScreenEl = document.querySelector("#result-screen");
 var resultEl = document.querySelector("#result");
 var nextEl = document.querySelector("#next");
 var scoreScreen = document.querySelector("#your-score-screen");
+var endMessageEl = document.querySelector("#end-message");
 
 
 // Variable that stores all questions, choices and answers
@@ -118,14 +118,18 @@ function loadQuiz() {
             resultEl.textContent = "Correct ✅";
         } else {
             resultEl.textContent = "Wrong ❌ The correct answer was " + correctChoice;
+            // When the user chooses the wrong answer, the timer will go down by 15 seconds
             if (timeLeft > 15) {
                 timeLeft -= 15;
+            // If there are less than 15 seconds left, the timer will simply go down to 0, it will not go into negative numbers
             } else {
                 timeLeft = 0;
             }
+            // This fixes a bug where the label wasn't displaying the correct value at the end of the quiz
             timerEl.textContent = timeLeft;
 
         }
+        // The event listener has to be removed otherwise the currentQuestion index keeps adding up and the wrong question is displayed
         listEl.removeEventListener("click", clickedAnswer);
     });
 
@@ -142,6 +146,7 @@ function loadQuiz() {
     // After the user answers each question, the result is displayed and they can click on the button to move on to the next question. After the last question, the user can view their score.
     if (currentQuestion === (questions.length - 1)) {
         nextEl.textContent = "View your score";
+        // As soon as the user chooses an answer for the last question, the timer will stop running
         listEl.addEventListener("click", function () {
             clearInterval(timeInterval);
         });
@@ -163,14 +168,31 @@ function endQuiz() {
     questionsEl.setAttribute("hidden", "hidden");
     // Show your score screen
     scoreScreen.removeAttribute("hidden");
-    // Show your score in the screen
-    scoreIsEl.textContent = timeLeft;
+    // Show your score on the screen
+     if (timeLeft >= 85) {
+        endMessageEl.textContent = "Wow that was amazing. Your final score is " + timeLeft;
+    } else if (timeLeft < 85 && timeLeft >= 60) {
+        endMessageEl.textContent = "Well done. Your final score is " + timeLeft;
+    } else if (timeLeft < 60 && timeLeft >= 40) {
+        endMessageEl.textContent = "Not bad. Your final score is " + timeLeft;
+    } else if (timeLeft < 40 && timeLeft > 0) {
+        endMessageEl.textContent = "That wasn't great, you might want to try again. Your final score is " + timeLeft;
+    } else if (timeLeft === 0) {
+        endMessageEl.textContent = "It looks like you either ran out of time or got too many questions wrong. Please try again. Your final score is " + timeLeft;
+    }
 }
 
 
 
 var scoresSaved = []
 
+// ****************
+// SAVE YOUR RESULT
+// ****************
+
+
+
+// If the user doesn't enter a name in the input box, an error message will be displayed. Otherwise, the user's input and saved score will be saved to localStorage. 
 submitEl.addEventListener("click", function (event) {
     if (nameEl.value === "") {
         event.preventDefault();

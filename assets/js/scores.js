@@ -1,4 +1,9 @@
-// View stored scores in highscores.html
+// ***********
+// HIGH SCORES
+// ***********
+
+
+// Select HTML elements needed from the high scores page
 var highScoresEl = document.querySelector("#highscores");
 var clearBtnEl = document.querySelector("#clear");
 

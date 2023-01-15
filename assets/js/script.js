@@ -108,7 +108,7 @@ function loadQuiz() {
         if (userChoice === correctChoice) {
             resultEl.textContent = "Correct ✅";
         } else {
-            resultEl.textContent = "Wrong ❌";
+            resultEl.textContent = "Wrong ❌ The correct answer was " + correctChoice;
         }
     });
 
@@ -122,6 +122,7 @@ function loadQuiz() {
     }
 
     
+    // After the user answers each question, the result is displayed and they can click on the button to move on to the next question. After the last question, the user can view their score.
     if (currentQuestion === (questions.length - 1)) {
         nextEl.textContent = "View your score";
         nextEl.setAttribute("onclick", "window.location.href='./highscores.html'");

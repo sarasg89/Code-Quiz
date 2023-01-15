@@ -27,7 +27,7 @@ function startQuiz() {
     questionsEl.removeAttribute("hidden");
 
     countdown();
-    showFirstQuestion();
+    loadQuiz();
 }
 
 // When the "start quiz" button is pressed, the timer will start counting down from 100 and the screen will move on to the questions
@@ -40,6 +40,7 @@ startQuizEl.addEventListener("click", startQuiz);
 
 // Select HTML elements needed from the questions screen
 var questionEl = document.querySelector("#question");
+var listEl = document.querySelector("#list");
 var choice1El = document.querySelector("#choice1");
 var choice2El = document.querySelector("#choice2");
 var choice3El = document.querySelector("#choice3");
@@ -75,13 +76,30 @@ var questions = [
     },
 ];
 
-function showFirstQuestion() {
-    questionEl.textContent = questions[0].title;
-    choice1El.textContent = "1. " + questions[0].choices[0];
-    choice2El.textContent = "2. " + questions[0].choices[1];
-    choice3El.textContent = "3. " + questions[0].choices[2];
-    choice4El.textContent = "4. " + questions[0].choices[3];
-}
- 
+var currentQuestion = 0;
 
+function loadQuiz() {
+    var currentQuizData = questions[currentQuestion];
+
+    questionEl.textContent = currentQuizData.title;
+    choice1El.textContent = "1. " + currentQuizData.choices[0];
+    choice2El.textContent = "2. " + currentQuizData.choices[1];
+    choice3El.textContent = "3. " + currentQuizData.choices[2];
+    choice4El.textContent = "4. " + currentQuizData.choices[3];
+    
+    
+    listEl.addEventListener("click", function clickedAnswer(event) {
+        event.target.setAttribute("data-state", "chosen")
+    });
+    
+    // currentQuestion++;
+
+    // loadQuiz();
+
+    // if (currentQuestion < questions.length) {
+    //    loadQuiz();
+    // } else {
+
+    // }
+}
 

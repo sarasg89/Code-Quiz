@@ -176,8 +176,11 @@ submitEl.addEventListener("click", function (event) {
     } else {
         var user = nameEl.value;
         var score = timeLeft;
-        scoresSaved = JSON.parse(localStorage.getItem("user"));
-        
+
+        if(localStorage.getItem("user") !== null){
+            scoresSaved = JSON.parse(localStorage.getItem("user"));
+        }
+
         scoresSaved.push([user, score]);
 
         localStorage.setItem("user", JSON.stringify(scoresSaved));

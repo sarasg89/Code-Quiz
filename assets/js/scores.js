@@ -2,9 +2,6 @@
 var highScoresEl = document.querySelector("#highscores");
 var clearBtnEl = document.querySelector("#clear");
 
-
-
-
 var scoresSaved = [JSON.parse(localStorage.getItem("user"))];
 
 // The following function renders items in a list as <li> elements
@@ -30,12 +27,10 @@ function init() {
     // If scores were retrieved from localStorage, update the highScores array to it
     if (storedScores !== null) {
         scoresSaved = storedScores;
+    } else {
+        return;
     }
-
     createList();
-    console.log("the init() function is being called correctly when the page loads")
-    console.log(scoresSaved[0])
-    console.log(scoresSaved[1])
 }
 
 init(); 

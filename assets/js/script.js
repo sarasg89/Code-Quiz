@@ -7,18 +7,19 @@ var timerEl = document.querySelector("#time");
 var startQuizEl = document.querySelector("#start-quiz");
 var startScreenEl = document.querySelector("#start-screen");
 var questionsEl = document.querySelector("#questions-screen");
-
-
+var timeInterval;
+var timeLeft;
 
 // Function to create a countdown for 100-0 seconds
 function countdown() {
-    var timeLeft = 100;
-    var timeInterval = setInterval(function () {
+    timeLeft = 100;
+    timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = timeLeft;
-        if (timeLeft === 0) {
-            timerEl.textContent = timeLeft;
+        if (timeLeft <= 0) {
+            timerEl.textContent = 0;
             clearInterval(timeInterval);
+            endQuiz();
         }
     }, 1000);
 }
@@ -51,6 +52,7 @@ var choice4El = document.querySelector("#choice4");
 var resultScreenEl = document.querySelector("#result-screen");
 var resultEl = document.querySelector("#result");
 var nextEl = document.querySelector("#next");
+var scoreScreen = document.querySelector("#your-score-screen");
 
 
 // Variable that stores all questions, choices and answers
@@ -112,7 +114,13 @@ function loadQuiz() {
             resultEl.textContent = "Correct ✅";
         } else {
             resultEl.textContent = "Wrong ❌ The correct answer was " + correctChoice;
+            if (timeLeft > 15) {
+                timeLeft -= 15;
+            } else {
+                timeLeft = 0;
+            }
         }
+        listEl.removeEventListener("click", clickedAnswer);
     });
 
     // When the next question button is clicked, the currentQuestion counter increases by 1, the result screen hides, and the loadQuiz function starts up again
@@ -129,7 +137,7 @@ function loadQuiz() {
     if (currentQuestion === (questions.length - 1)) {
         nextEl.textContent = "View your score";
         nextEl.addEventListener("click", function () {
-            scoreScreen.removeAttribute("hidden");
+            endQuiz();
         })
     } else {
         nextEl.addEventListener("click", nextQuestion);
@@ -137,13 +145,23 @@ function loadQuiz() {
 
 }
 
+function endQuiz() {
+    // Stop timer
+    clearInterval(timeInterval);
+    // Hide questions screen
+    resultScreenEl.setAttribute("hidden", "hidden");
+    resultScreenEl.removeAttribute("style");
+    questionsEl.setAttribute("hidden", "hidden");
+    // Show your score screen
+    scoreScreen.removeAttribute("hidden");
+    // Show your score in the screen
+}
 
 // ***********
 // VIEW SCORES
 // ***********
 var scoreIsEl = document.querySelector("#score-is");
 var submitEl = document.querySelector("#submitbtn");
-var scoreScreen = document.querySelector("#your-score-screen");
 var nameEl = document.querySelector("#name");
 var displayMessageEL = document.querySelector("#display-message");
 
@@ -164,5 +182,4 @@ submitEl.addEventListener("click", function (event) {
 
     };
 });
-
 

@@ -144,6 +144,11 @@ function loadQuiz() {
 var scoreIsEl = document.querySelector("#score-is");
 var submitEl = document.querySelector("#submitbtn");
 var scoreScreen = document.querySelector("#your-score-screen");
+var initialsEl = document.querySelector("#initials");
 
-submitEl.setAttribute("onclick", "window.location.href='./highscores.html'");
+// submitEl.setAttribute("onclick", "window.location.href='./highscores.html'");
 
+submitEl.addEventListener("click", function(event) {
+    event.preventDefault();
+    localStorage.setItem("initials", initialsEl.value);
+});

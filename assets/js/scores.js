@@ -1,5 +1,9 @@
 // View stored scores in highscores.html
 var highScoresEl = document.querySelector("#highscores");
+var clearBtnEl = document.querySelector("#clear");
+
+
+
 
 var scoresSaved = [JSON.parse(localStorage.getItem("user"))];
 
@@ -35,3 +39,9 @@ function init() {
 }
 
 init(); 
+
+// Function to clear any stored scores
+clearBtnEl.addEventListener("click", function() {
+    localStorage.clear();
+    highScoresEl.innerHTML = "";
+})

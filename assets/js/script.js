@@ -123,6 +123,8 @@ function loadQuiz() {
             } else {
                 timeLeft = 0;
             }
+            timerEl.textContent = timeLeft;
+
         }
         listEl.removeEventListener("click", clickedAnswer);
     });
@@ -140,9 +142,10 @@ function loadQuiz() {
     // After the user answers each question, the result is displayed and they can click on the button to move on to the next question. After the last question, the user can view their score.
     if (currentQuestion === (questions.length - 1)) {
         nextEl.textContent = "View your score";
-        nextEl.addEventListener("click", function () {
-            endQuiz();
-        })
+        listEl.addEventListener("click", function () {
+            clearInterval(timeInterval);
+        });
+        nextEl.addEventListener("click", endQuiz);
     } else {
         nextEl.addEventListener("click", nextQuestion);
     }
@@ -161,8 +164,7 @@ function endQuiz() {
     // Show your score screen
     scoreScreen.removeAttribute("hidden");
     // Show your score in the screen
-    scoreIsEl.textContent = timerEl.textContent;
-
+    scoreIsEl.textContent = timeLeft;
 }
 
 

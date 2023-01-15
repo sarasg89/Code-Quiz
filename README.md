@@ -27,6 +27,8 @@ If the user wishes to see previous high scores, they can do so by clicking on th
 
 ## Deployment
 
+https://sarasg89.github.io/Code-Quiz/
+
 ## Credits
 
 Colors used for the buttons are Entrepreneurial Lies by [Eggradients](https://www.eggradients.com/)

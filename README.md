@@ -20,7 +20,7 @@ If the user wishes to see previous high scores, they can do so by clicking on th
 ![](./assets/images/screenshot%203.png)
 
 ### Sample incorrect answer
-![](./assets/images/screenshot%204.png)
+![](./assets/images/screenshot%204b.png)
 
 ### View your score after last question
 ![](./assets/images/screenshot%205.png)
@@ -38,6 +38,8 @@ https://sarasg89.github.io/Code-Quiz/
 ## Credits
 
 Colors used for the buttons are Entrepreneurial Lies by [Eggradients](https://www.eggradients.com/)
+
+I followed this [tutorial](https://dev.to/madanlal/how-to-sort-array-of-object-using-object-keys-in-javascript-58f1) to create a function that would sort the saved scores in descending order
 
 ## License
 

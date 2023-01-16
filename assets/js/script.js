@@ -205,7 +205,7 @@ submitEl.addEventListener("click", function (event) {
             scoresSaved = JSON.parse(localStorage.getItem("user"));
         }
 
-        scoresSaved.push([user, score]);
+        scoresSaved.push({user: user, score: score});
 
         localStorage.setItem("user", JSON.stringify(scoresSaved));
 

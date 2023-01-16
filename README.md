@@ -29,7 +29,7 @@ If the user wishes to see previous high scores, they can do so by clicking on th
 ![](./assets/images/screenshot%206.png)
 
 ### View saved scores
-![](./assets/images/Screenshot%207b.png)
+![](./assets/images/screenshot%207b.png)
 
 ## Deployment
 

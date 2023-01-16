@@ -2,7 +2,7 @@
 
 ## Description
 
-I have created a timed quiz on JavaScript fundamentals that stores high scores. 
+I have created a quiz on JavaScript topics that must be completed in 100 seconds.
 
 When the user clicks on the start button, the timer starts. The user will be presented with 5 questions to be answered before the timer ends. The game is over either once the timer ends or when the user has answered all questions. After the quiz, the user can save their score by entering their name/initials. 
 

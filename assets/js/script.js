@@ -169,9 +169,9 @@ function endQuiz() {
     // Show your score screen
     scoreScreen.removeAttribute("hidden");
     // Show your score on the screen
-     if (timeLeft >= 85) {
+     if (timeLeft >= 80) {
         endMessageEl.textContent = "Wow that was amazing. Your final score is " + timeLeft;
-    } else if (timeLeft < 85 && timeLeft >= 60) {
+    } else if (timeLeft < 80 && timeLeft >= 60) {
         endMessageEl.textContent = "Well done. Your final score is " + timeLeft;
     } else if (timeLeft < 60 && timeLeft >= 40) {
         endMessageEl.textContent = "Not bad. Your final score is " + timeLeft;
